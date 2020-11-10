@@ -6,21 +6,39 @@
 	<body>
 		<p>Valeur du compteur :</p>
 		<p id="compteur">10</p>
+		<br>
+		<canvas id="carre">Ici, il y a un canvas</canvas>
 	</body>
 	<script>
+		//TP2
 		function pageChargee()
 		{
 			let compteur = document.getElementById("compteur");
 			let i = 10;
 
-			setInterval(() => {
+			let interval = setInterval(() => {
 				if (i > 0)
 				{
 					compteur.innerHTML = --i;
+				}
+				else
+				{
+					clearInterval(interval);
 				}
 			}, 1000);
 		}
 
 		window.addEventListener('load', pageChargee);
+
+		//TP3 (EN COURS)
+		function gestionCanvas()
+		{
+			let canvas = document.getElementById("carre");
+			let context = canvas.getContext("2d");
+
+
+		}
+
+		window.addEventListener('load', gestionCanvas);
 	</script>
 </html>
