@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Compteur en JS</title>
+	</head>
+	<body>
+		<p>Valeur du compteur :</p>
+		<p id="compteur">10</p>
+	</body>
+	<script>
+		function pageChargee()
+		{
+			let compteur = document.getElementById("compteur");
+			let i = 10;
+
+			setInterval(() => {
+				if (i > 0)
+				{
+					compteur.innerHTML = --i;
+				}
+			}, 1000);
+		}
+
+		window.addEventListener('load', pageChargee);
+	</script>
+</html>

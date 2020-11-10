@@ -131,3 +131,11 @@ aside li {
 footer {
   margin-top: 10px;
 }
+
+@media (max-width: 600px)
+{
+	aside
+	{
+		display: none;
+	}
+}
