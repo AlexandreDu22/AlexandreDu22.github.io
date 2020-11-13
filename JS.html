@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Compteur en JS</title>
+		<title>JS</title>
 	</head>
 	<body>
 		<p>Valeur du compteur :</p>
@@ -10,7 +10,7 @@
 		<canvas id="carre">Ici, il y a un canvas</canvas>
 	</body>
 	<script>
-		//TP2
+		//TP1
 		function pageChargee()
 		{
 			let compteur = document.getElementById("compteur");
@@ -30,13 +30,27 @@
 
 		window.addEventListener('load', pageChargee);
 
-		//TP3 (EN COURS)
+		//TP2 (EN COURS)
 		function gestionCanvas()
 		{
 			let canvas = document.getElementById("carre");
 			let context = canvas.getContext("2d");
 
+			let x = 0;
+			let y = 10;
 
+			let interval = setInterval(() => {
+				context.clearRect(x - 10, y, x - 10, y);
+				context.fillRect(x, y, x, y);
+
+				x += 10;
+
+				if (x > canvas.width)
+				{
+					clearInterval(interval);
+					alert("Fin du dessin");
+				}
+			}, 100);
 		}
 
 		window.addEventListener('load', gestionCanvas);
