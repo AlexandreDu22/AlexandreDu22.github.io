@@ -8,6 +8,8 @@
 		<p id="compteur">10</p>
 		<br>
 		<canvas id="carre">Ici, il y a un canvas</canvas>
+		<canvas id="carre2">Ici, il y a un canvas</canvas>
+		<canvas id="carre3">Ici, il y a un canvas</canvas>
 	</body>
 	<script>
 		//TP1
@@ -30,8 +32,8 @@
 
 		window.addEventListener('load', pageChargee);
 
-		//TP2 (EN COURS)
-		function gestionCanvas()
+		//TP2
+		function gestionCanvasTP2()
 		{
 			let canvas = document.getElementById("carre");
 			let context = canvas.getContext("2d");
@@ -40,8 +42,8 @@
 			let y = 10;
 
 			let interval = setInterval(() => {
-				context.clearRect(x - 10, y, x - 10, y);
 				context.fillRect(x, y, x, y);
+				context.clearRect(x - 10, y, x - 10, y);
 
 				x += 10;
 
@@ -53,6 +55,74 @@
 			}, 100);
 		}
 
-		window.addEventListener('load', gestionCanvas);
+		window.addEventListener('load', gestionCanvasTP2);
+
+		//TP3
+		function gestionCanvasTP3()
+		{
+			let canvas = document.getElementById("carre2");
+			let context = canvas.getContext("2d");
+			context.fillStyle = "red"
+
+			let x = 0;
+			let y = 10;
+			var demarrage = 0;
+
+			let interval = setInterval(() => {
+				if (demarrage < 2000)
+				{
+					demarrage += 100;
+				}
+				else
+				{
+					context.fillRect(x, y, x, y);
+					context.clearRect(x - 10, y, x - 10, y);
+
+					x += 10;
+
+					if (x > canvas.width)
+					{
+						clearInterval(interval);
+						alert("Fin du dessin");
+					}
+				}
+			}, 100);
+		}
+
+		window.addEventListener('load', gestionCanvasTP3);
+
+		//TP4 (En cours)
+		function gestionCanvasTP4()
+		{
+			let canvas = document.getElementById("carre3");
+			let context = canvas.getContext("2d");
+			context.fillStyle = "red"
+
+			let x = 0;
+			let y = 10;
+			var demarrage = 0;
+
+			let interval = setInterval(() => {
+				if (demarrage < 2000)
+				{
+					demarrage += 100;
+				}
+				else
+				{
+					context.fillRect(x, y, x, y);
+					context.clearRect(x - 10, y, x - 10, y);
+
+					x += 10;
+
+					if (x > canvas.width)
+					{
+						clearInterval(interval);
+						alert("Fin du dessin");
+					}
+				}
+			}, 100);
+		}
+
+		window.addEventListener('load', gestionCanvasTP4);
 	</script>
 </html>
