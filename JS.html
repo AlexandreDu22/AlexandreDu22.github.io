@@ -37,6 +37,7 @@
 		{
 			let canvas = document.getElementById("carre");
 			let context = canvas.getContext("2d");
+			context.fillStyle = "red";
 
 			let x = 0;
 			let y = 10;
@@ -50,7 +51,7 @@
 				if (x > canvas.width)
 				{
 					clearInterval(interval);
-					alert("Fin du dessin");
+					//alert("Fin du dessin");
 				}
 			}, 100);
 		}
@@ -83,7 +84,7 @@
 					if (x > canvas.width)
 					{
 						clearInterval(interval);
-						alert("Fin du dessin");
+						//alert("Fin du dessin");
 					}
 				}
 			}, 100);
@@ -91,34 +92,89 @@
 
 		window.addEventListener('load', gestionCanvasTP3);
 
-		//TP4 (En cours)
+		//TP4
+		class Carre
+		{
+			constructor(canvas, x, y)
+			{
+				this.canvas = canvas;
+				this.x = x;
+				this.y = y;
+
+				this.size = 10;
+				this.context = canvas.getContext("2d");
+
+				this.draw();
+			}
+
+			clear()
+			{
+				this.context.clearRect(this.x, this.y, this.size, this.size)
+			}
+
+			update()
+			{
+				this.x += this.size;
+			}
+
+			draw()
+			{
+				this.context.fillRect(this.x, this.y, this.size, this.size);
+			}
+
+			move()
+			{
+				this.clear();
+				this.update();
+				this.draw();
+			}
+		}
+
 		function gestionCanvasTP4()
 		{
 			let canvas = document.getElementById("carre3");
 			let context = canvas.getContext("2d");
 			context.fillStyle = "red"
 
-			let x = 0;
-			let y = 10;
 			var demarrage = 0;
+			let discriminant = 0;
+
+			let carre1 = new Carre(canvas, 0, 0);
+			let carre2 = new Carre(canvas, 0, 15);
+			let carre3 = new Carre(canvas, 0, 30);
 
 			let interval = setInterval(() => {
-				if (demarrage < 2000)
+				if (demarrage < 4000)
 				{
 					demarrage += 100;
 				}
 				else
 				{
-					context.fillRect(x, y, x, y);
-					context.clearRect(x - 10, y, x - 10, y);
-
-					x += 10;
-
-					if (x > canvas.width)
+					switch (discriminant % 3)
 					{
-						clearInterval(interval);
-						alert("Fin du dessin");
+						case 0:
+							carre1.move();
+							break;
+
+						case 1:
+							carre2.move();
+							break;
+
+						case 2:
+							carre3.move();
+							break;
+
+						default:
+							break;
 					}
+
+					discriminant++;
+				}
+
+				if (x > canvas.width)
+				{
+					clearInterval(interval);
+					//alert("Fin du dessin");
 				}
 			}, 100);
 		}
