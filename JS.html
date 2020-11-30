@@ -171,14 +171,24 @@
 					discriminant++;
 				}
 
-				if (x > canvas.width)
-				{
-					clearInterval(interval);
-					//alert("Fin du dessin");
-				}
+				//if (x > canvas.width)
+				//{
+				//	clearInterval(interval);
+				//	//alert("Fin du dessin");
+				//}
 			}, 100);
 		}
 
 		window.addEventListener('load', gestionCanvasTP4);
+
+		if ('serviceWorker' in navigator) {
+		  navigator.serviceWorker.register('/sw-test/sw.js', { scope: '/sw-test/' }).then(function(reg) {
+		    // registration worked
+		    console.log('Registration succeeded. Scope is ' + reg.scope);
+		  }).catch(function(error) {
+ 		   // registration failed
+  		  console.log('Registration failed with ' + error);
+		  });
+		};
 	</script>
 </html>
